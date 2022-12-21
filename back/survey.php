@@ -14,7 +14,7 @@
                 <p class="card-text"><?= $survey['content'] ?></p>
                 <p class="card-text">參與次數 : <?= $survey['vote'] ?></p>
                 <a href="./api/survey_active.php?id=<?= $survey['id'] ?>" class="card-link"><?= $activeText ?></a>
-                <a href="#" class="card-link">編輯</a>
+                <a href="./center.php?do=survey_edit&id=<?= $survey['id'] ?>" class="card-link">編輯</a>
                 <a href="./api/survey_del.php?id=<?= $survey['id'] ?>" class="card-link">刪除</a>
             </div>
         </div>
