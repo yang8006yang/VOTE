@@ -1,0 +1,31 @@
+a{
+    text-decoration: none;
+    color: gray;
+}
+
+/* ===============NAV================= */
+@media only screen and (min-width: 576px){ 
+    
+    .login{
+        position: absolute;
+        right: 15px;
+    }
+    
+    .singup{
+        position: absolute;
+
+        right: 80px;
+        
+
+    }
+}
+/*=================INDEX-MAIN===================  */
+.mainImg{
+    z-index: 100;
+    left: 35%;
+}
+
+/*=================LOGIN===================  */
+.loginForm{ 
+    width: 25vw;
+}
