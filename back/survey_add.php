@@ -1,14 +1,16 @@
 <h1>新增投票項目</h1>
 <form action="./api//survey_add.php" method="post">
 
-    <label for="">主題</label>
-    <input type="text" name="subject" required>
+    <label for="subject">主題</label>
+    <input type="text" name="subject" id="subject" required>
     <select name="type" id="">
         <option value="1">歌曲</option>
         <option value="2">歌手</option>
         <option value="3">調查</option>
         <option value="4">其他</option>
     </select>
+    <label for="content">內文</label>
+    <textarea name="content" id="content" cols="30" rows="10"></textarea>
 
     <div id="options">
         <div class="option">

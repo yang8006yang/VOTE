@@ -21,7 +21,7 @@ if (!isset($_SESSION['login'])) {
 <body>
     <aside id="scroll">
         <ul class="asideNav" id="scroll">
-            <li><a href="#">首頁</a></li>
+            <li><a href="./center.php?do=main">首頁</a></li>
             <li><a href="#">搜尋</a></li>
             <li><button data-bs-toggle="collapse" data-bs-target="#demo">投票</button></li>
             <ul id="demo" class="collapse">
@@ -33,6 +33,7 @@ if (!isset($_SESSION['login'])) {
                     echo "</ul>";
                     echo "<li><a href='#'>新增歌曲</a></li>";
                     echo "<li><a href='#'>編輯歌曲</a></li>";
+                    echo "<li><a href='#'>會員中心</a></li>";
                 } else {
                     echo "<li><a href=''>前往投票</a></li>
                     <li><a href=''>查看我的投票</a></li>

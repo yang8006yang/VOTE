@@ -9,13 +9,13 @@ body{
 }
 aside{
     float: left;
-    width: 20rem;
+    width: 25rem;
     height: 100vh;
     background-color: #121212;
 }
 .asideNav{
     overflow-y: scroll;
-    width: 20rem;
+    width: 25rem;
     margin: 5rem auto;
     text-align: center;
     height: 100vh;

@@ -61,7 +61,7 @@ function update($table, $col, ...$args)
         foreach ($col as $key => $value) {
             $tmp[] = "`$key`='$value'";
         }
-        $sql = $sql . join("&&", $tmp);
+        $sql = $sql . join(",", $tmp);
     } else {
         echo "錯誤,請提供以陣列型式的更新資料";
     }
@@ -74,10 +74,12 @@ function update($table, $col, ...$args)
             }
 
             $sql = $sql . " where " . join(" && ", $tmp);
+            
         } else {
 
             $sql = $sql . " where `id`='{$args[0]}'";
         }
+
         return $pdo->exec($sql);
     }
 }
