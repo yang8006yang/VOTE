@@ -79,7 +79,7 @@ function update($table, $col, ...$args)
 
             $sql = $sql . " where `id`='{$args[0]}'";
         }
-
+        // echo $sql;
         return $pdo->exec($sql);
     }
 }
@@ -111,7 +111,7 @@ function del($table,$id){
         $sql=$sql . " where `id`='$id'";
     }
 
-    //echo $sql;
+    // echo $sql;
     return $pdo->exec($sql);
 }
 
