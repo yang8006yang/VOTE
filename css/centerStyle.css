@@ -43,3 +43,10 @@ nav{
 #scroll::-webkit-scrollbar-thumb {
   background-color: #ababab;
 }
+
+/* 搜尋框 */
+#keyword{
+  border-radius: 20px;
+  /* background-color:  #242424;; */
+  /* display: none; */
+}

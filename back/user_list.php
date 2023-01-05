@@ -38,3 +38,8 @@
         }
         ?>
 </div>
+<form action="./api/admin_add.php" method="post">
+<label for="id">ID : </label>    
+<input type="text" name="id" id="id">
+<input type="submit" value="設為管理員">
+</form>

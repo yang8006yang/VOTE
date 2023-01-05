@@ -4,7 +4,7 @@
     <div class="col-4">
         <form action="./api/login.php" method="POST" class="loginForm shadow p-5 rounded">
             <div>MUSIC SPOT</div>
-            <input class="form-control" type="text" name="acc" placeholder="手機號碼、用戶名稱或電子郵件地址"  required>
+            <input class="form-control" type="text" name="acc" placeholder="用戶名稱或電子郵件地址"  required>
             <input class="form-control" type="password" name="pw" placeholder="密碼" required>
             <input type="submit" value="登入" class="btn btn-warning w-100">
             <?php

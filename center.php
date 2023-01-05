@@ -22,10 +22,12 @@ if (!isset($_SESSION['login'])) {
     <aside id="scroll">
         <ul class="asideNav" id="scroll">
             <li><a href="./center.php?do=main">首頁</a></li>
-            <li><a href="#">搜尋</a></li>
-            <li><button data-bs-toggle="collapse" data-bs-target="#vote">投票</button></li>
-            <ul id="vote" class="collapse">
-                <?php
+            <li>
+            <form method="post" action="./api/search.php"><input type="search" id="keyword" name="keyword" placeholder="  search"></input><input type="submit" value="S"></form>
+        </li>
+        <li><button data-bs-toggle="collapse" data-bs-target="#vote">投票</button></li>
+        <ul id="vote" class="collapse">
+            <?php
                 if ($_SESSION['login']['acc'] == 'admin' && $_SESSION['login']['pw'] == 'admin') {
                     echo "<li><a href='center.php?do=survey_add'>新增投票</a></li>
                     <li><a href='center.php?do=survey'>編輯投票</a></li>
@@ -47,25 +49,25 @@ if (!isset($_SESSION['login'])) {
                 }
                 ?>
 
-            </ul>
-            <div>
+</ul>
+<div>
+    
+    </div>
+</aside>
 
-            </div>
-    </aside>
-
-    <div class="container-fuild">
-        <nav>
-            <a class='btn btn-light' href='logout.php'>登出</a>
-        </nav>
-
-        <main>
+<div class="container-fuild">
+    <nav>
+        <a class='btn btn-light' href='logout.php'>登出</a>
+    </nav>
+    
+    <main>
         <?php
             $frontPath = './front/';
             $backPath = './back/';
-
+            
             $do = $_GET['do'] ?? 'main';
             // ?? => 有就是?前面的 沒有就後面的
-
+            
             if ($_SESSION['login']['acc'] == 'admin' && $_SESSION['login']['pw'] == 'admin') {
                 $path = $backPath;
                 // $file = "./back/" . $do . ".php";
@@ -73,26 +75,28 @@ if (!isset($_SESSION['login'])) {
                 $path = $frontPath;
                 // $file = "./front/" . $do . ".php";
             }
-
+            
             switch ($do) {
                 case 'survey_result':
                     $path = $frontPath;
                     break;
-                case 'main':
-                    $path = $backPath;
-            }
-            
-            $file = $path . $do . '.php';
-
-
-            if (file_exists($file)) {
-                include $file;
-            } else {
-                include "./back/main.php";
-            }
-            ?>
+                    case 'main':
+                        $path = $backPath;
+                    }
+                    
+                    $file = $path . $do . '.php';
+                    
+                    
+                    if (file_exists($file)) {
+                        include $file;
+                    } else {
+                        include "./back/main.php";
+                    }
+                    ?>
         </main>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/center.js"></script>
 </body>
 
 </html>

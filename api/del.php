@@ -14,7 +14,7 @@ switch ($_GET['table']) {
         break;
     case 'user':
         $table='users';
-        $do='user_list';
+        $do='user_list&level=1';
         break;
     
     default:
