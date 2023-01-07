@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-12-28 09:21:53
--- 伺服器版本： 10.4.24-MariaDB
--- PHP 版本： 8.1.6
+-- 產生時間： 2023-01-07 15:55:11
+-- 伺服器版本： 10.4.25-MariaDB
+-- PHP 版本： 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,68 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `playlists`
+--
+
+CREATE TABLE `playlists` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `list_name` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `update_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- 傾印資料表的資料 `playlists`
+--
+
+INSERT INTO `playlists` (`id`, `list_name`, `description`, `user_id`, `created_at`, `update_at`) VALUES
+(1, 'hello', '123', 1, '2023-01-03 07:50:50', '2023-01-03 07:50:50'),
+(2, 'hello', '123', 1, '2023-01-03 07:51:29', '2023-01-03 07:51:29');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `playlist_songs`
+--
+
+CREATE TABLE `playlist_songs` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `list_id` int(10) UNSIGNED NOT NULL,
+  `song_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `songs`
+--
+
+CREATE TABLE `songs` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `song_name` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `singer` varchar(32) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `yt_link` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `cover` text COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `type` text COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '未分類',
+  `active` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `update_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- 傾印資料表的資料 `songs`
+--
+
+INSERT INTO `songs` (`id`, `song_name`, `description`, `singer`, `yt_link`, `cover`, `type`, `active`, `created_at`, `update_at`) VALUES
+(2, 'hoodie', '', 'Hey!violet', 'GNtIvGrqAZE', '20230104013533.gif', 'POP', 0, '2023-01-04 05:35:33', '2023-01-07 12:30:23'),
+(3, 'strawberry moon', 'strawberry moon', 'IU(아이유)', 'sqgxcCjD04s', '20230107083513.jpg', 'K-POP', 0, '2023-01-07 12:35:13', '2023-01-07 12:35:13');
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `survey_log`
 --
 
@@ -35,6 +97,13 @@ CREATE TABLE `survey_log` (
   `option_id` int(10) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- 傾印資料表的資料 `survey_log`
+--
+
+INSERT INTO `survey_log` (`id`, `user`, `ip`, `subject_id`, `option_id`, `created_at`) VALUES
+(1, 1, '::1', 0, 18, '2023-01-03 06:02:24');
 
 -- --------------------------------------------------------
 
@@ -59,11 +128,9 @@ INSERT INTO `survey_options` (`id`, `subject_id`, `opt`, `vote`, `created_at`, `
 (9, 2, '1', 0, '2022-12-20 07:24:43', '2022-12-20 07:24:43'),
 (10, 2, '2', 0, '2022-12-20 07:24:43', '2022-12-20 07:24:43'),
 (13, 5, '33333', 0, '2022-12-21 03:33:34', '2022-12-21 03:33:34'),
-(14, 6, '4', 0, '2022-12-22 08:03:24', '2022-12-22 08:03:24'),
-(15, 6, '44', 0, '2022-12-22 08:03:24', '2022-12-22 08:03:24'),
 (16, 5, '21212', 0, '2022-12-28 06:36:44', '2022-12-28 06:36:44'),
 (17, 5, '21212', 0, '2022-12-28 06:36:51', '2022-12-28 06:36:51'),
-(18, 0, '1321321', 0, '2022-12-28 08:19:56', '2022-12-28 08:19:56');
+(18, 0, '1321321', 1, '2022-12-28 08:19:56', '2023-01-03 06:02:24');
 
 -- --------------------------------------------------------
 
@@ -87,9 +154,8 @@ CREATE TABLE `survey_subjects` (
 --
 
 INSERT INTO `survey_subjects` (`id`, `subject`, `type`, `content`, `active`, `vote`, `created_at`, `update_at`) VALUES
-(0, 'test', 4, '123132132132131313', 1, 0, '2022-12-20 07:23:34', '2022-12-21 03:15:38'),
-(5, '3', 4, '1221221', 0, 0, '2022-12-21 03:33:34', '2022-12-28 06:34:25'),
-(6, '4', 2, '44445555555857999999', 0, 0, '2022-12-22 08:03:24', '2022-12-22 08:03:24');
+(0, 'test', 4, '123132132132131313', 1, 1, '2022-12-20 07:23:34', '2023-01-03 06:02:24'),
+(5, '3', 4, '1221221', 0, 0, '2022-12-21 03:33:34', '2022-12-28 06:34:25');
 
 -- --------------------------------------------------------
 
@@ -120,6 +186,24 @@ INSERT INTO `users` (`id`, `acc`, `pw`, `email`, `last_login`, `name`, `level`) 
 --
 
 --
+-- 資料表索引 `playlists`
+--
+ALTER TABLE `playlists`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `playlist_songs`
+--
+ALTER TABLE `playlist_songs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `songs`
+--
+ALTER TABLE `songs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `survey_log`
 --
 ALTER TABLE `survey_log`
@@ -148,10 +232,28 @@ ALTER TABLE `users`
 --
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `playlists`
+--
+ALTER TABLE `playlists`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `playlist_songs`
+--
+ALTER TABLE `playlist_songs`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `songs`
+--
+ALTER TABLE `songs`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `survey_log`
 --
 ALTER TABLE `survey_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `survey_options`
