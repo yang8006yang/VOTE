@@ -1,7 +1,13 @@
 <?php
 include_once "../db/base.php";
 
-update('survey_subjects',['subject'=>$_POST['subject'],'type'=>$_POST['type'],'content'=>$_POST['content']],$_POST['id']);
+update('survey_subjects',
+[
+    'subject'=>$_POST['subject'],
+    'type'=>$_POST['type'],
+    'content'=>$_POST['content']
+],
+    $_POST['id']);
 $sql="SELECT `id` FROM `survey_options` WHERE `subject_id`={$_POST['id']}";
 $opt_id=$pdo->query($sql)->fetchALL(PDO::FETCH_COLUMN);
 

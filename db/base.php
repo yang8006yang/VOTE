@@ -48,6 +48,7 @@ function find($table, $id)
     } else {
         $sql = $sql . "WHERE `id`=$id";
     }
+    // echo $sql;
     return $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
 }
 
@@ -126,4 +127,8 @@ function q($sql){
 // header
 function to($location){
     header("location:$location");
+}
+// 提示
+function alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
 }

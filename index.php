@@ -1,9 +1,6 @@
 <?php
 include "./db/base.php";
 
-function alert($msg) {
-    echo "<script type='text/javascript'>alert('$msg');</script>";
-}
 if(isset($_GET['error']) && $_GET['error']=='nolog'){
     alert('請登入');
 }
