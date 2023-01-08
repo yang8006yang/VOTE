@@ -23,7 +23,11 @@ if (!isset($_SESSION['login'])) {
         <ul class="asideNav" id="scroll">
             <li><a href="./center.php?do=main">首頁</a></li>
             <li>
-            <form method="post" action="./api/search.php"><input type="search" id="keyword" name="keyword" placeholder="  search"></input><input type="submit" value="S"></form>
+            <form method="get" action="./center.php">
+                <input type="hidden" name="do" value="search">
+                <input type="hidden" name="type" value="all">
+                <input type="search" id="keyword" name="keyword" placeholder="  search"></input>
+                <input type="submit" value="S"></form>
         </li>
         <li><button data-bs-toggle="collapse" data-bs-target="#vote">投票</button></li>
         <ul id="vote" class="collapse">
@@ -80,8 +84,11 @@ if (!isset($_SESSION['login'])) {
                 case 'survey_result':
                     $path = $frontPath;
                     break;
-                    case 'main':
-                        $path = $backPath;
+                case 'search':
+                    $path = $backPath;
+                    break;
+                case 'main':
+                    $path = $backPath;
                     }
                     
                     $file = $path . $do . '.php';
