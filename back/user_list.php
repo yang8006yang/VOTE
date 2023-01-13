@@ -9,33 +9,24 @@
             <td></td>
         </thead>
         <?php
-        if ($_GET['level'] == 0) {
-
-            $users = all("users", ['level' => '0']);
-
-            foreach ($users as $user) {
-        ?>
+        if(isset($_GET['level'])){
+            if ($_GET['level'] == 0) {
+                $users = all("users", ['level' => '0']);
+            } else {
+                $users = all("users", ['level' => '1']);
+            }
+        }else{
+            $users = all("users");}
+        foreach ($users as $user) {
+                    ?>
                 <tr>
                     <td><?= $user['id']; ?></td>
                     <td><?= $user['name']; ?></td>
                     <td><?= $user['acc']; ?></td>
                     <td><a href="./api/del.php?id=<?= $user['id'] ?>&table=user" class="card-link">刪除</a></td>
                 </tr>
-            <?php
+                <?php
             }
-        } else {
-            $users = all("users", ['level' => '1']);
-            foreach ($users as $user) {
-            ?>
-                <tr>
-                    <td><?= $user['id']; ?></td>
-                    <td><?= $user['name']; ?></td>
-                    <td><?= $user['acc']; ?></td>
-                    <td><a href="./api/del.php?id=<?= $user['id'] ?>&table=user" class="card-link">刪除</a></td>
-                </tr>
-        <?php
-            }
-        }
         ?>
 </div>
 <form action="./api/admin_add.php" method="post">

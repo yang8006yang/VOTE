@@ -1,50 +1,52 @@
-<h1>為你推薦</h1>
-<?php
-$UpSurvey=q("SELECT * FROM `survey_subjects` WHERE `id` IN('1','5','10')");
-foreach ($UpSurvey as $survey) {
-?>
-<div class="card bg-dark text-white mt-5">
-        <div class="card-body">
-            <h4 class="card-title"><?= $survey['subject'] ?></h4>
-            <p class="card-text"><?= $survey['content'] ?></p>
-            <p class="card-text">參與次數 : <?= $survey['vote'] ?></p>
-        </div>
-    </div>
+<h1 class="mt-3 ms-3">為你推薦</h1>
+<div class="d-flex ms-2">
     <?php
-}
-?>
-<h1>進行中的投票</h1>
+    $upsong = q("SELECT * FROM `songs` WHERE `id` IN('3','4','6')");
+    foreach ($upsong as $song) {
+    ?>
+        <div class="col m-2">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/<?= $song['yt_link']; ?>" width="100%" height="252" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    <?php
+    }
+    ?>
+</div>
 
-<?php
-$surveys=all('survey_subjects',['active'=>1]);
-foreach ($surveys as $survey) {
-    ?>
-    <div class="card bg-dark text-white mt-5">
-        <div class="card-body">
-            <h4 class="card-title"><?= $survey['subject'] ?></h4>
-            <p class="card-text"><?= $survey['content'] ?></p>
-            <p class="card-text">參與次數 : <?= $survey['vote'] ?></p>
-        </div>
-    </div>
-    
+<h1 class="mt-3 ms-3">進行中的投票</h1>
+<div class="d-flex ms-1">
     <?php
-}
-?>
-<h1>來看看結果吧</h1>
-<?php
-$closeSurveys=q("SELECT * FROM `survey_subjects` WHERE `vote`>'1' LIMIT 5");
-$surveys=all('survey_subjects',['active'=>0]);
-foreach ($closeSurveys as $survey) {
+    $surveys = all('survey_subjects', ['active' => 1], 'LIMIT 5');
+    foreach ($surveys as $survey) {
     ?>
-    <div class="card bg-dark text-white mt-5">
-        <div class="card-body">
-            <h4 class="card-title"><?= $survey['subject'] ?></h4>
-            <p class="card-text"><?= $survey['content'] ?></p>
-            <p class="card-text">參與次數 : <?= $survey['vote'] ?></p>
-        </div>
-    </div>
-    
+        <a href="./center.php?do=survey_vote&id=<?= $survey['id']; ?>" class="col card m-3 card_vote" style="border-radius:12px">
+            <div class="card-body">
+                <h4 class="card-title bold"><?= $survey['subject'] ?></h4>
+                <hr>
+                <p class="card-text"><?= $survey['content'] ?></p>
+                <p class="card-text">參與次數 : <?= $survey['vote'] ?></p>
+            </div>
+        </a>
+
     <?php
-}
-?>
+    }
+    ?>
+</div>
+<h1 class="mt-3 ms-3">來看看結果吧</h1>
+<div class="d-flex ms-1">
+    <?php
+    $closeSurveys = q("SELECT * FROM `survey_subjects` WHERE `vote`>'0' && `active` = '0' LIMIT 5");
+    foreach ($closeSurveys as $survey) {
+    ?>
+        <a href="./center.php?do=survey_result&id=<?= $survey['id']; ?>" class="col card m-3 card_vote" style="border-radius:12px">
+            <div class="card-body">
+                <h4 class="card-title bold"><?= $survey['subject'] ?></h4>
+                <hr>
+                <p class="card-text"><?= $survey['content'] ?></p>
+                <p class="card-text">參與次數 : <?= $survey['vote'] ?></p>
+            </div>
+        </a>
+        <?php
+    }
+    ?>
+    </div>
 </div>

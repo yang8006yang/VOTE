@@ -24,5 +24,6 @@ if(isset($_POST['opt'])){
         }
     }
 }
-to("../center.php?do=survey");
+// to("../center.php?do=survey");
+header("location:../center.php?do=survey");
 ?>

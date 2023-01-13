@@ -56,16 +56,35 @@ switch ($type) {
 // $sqlV=$sqlV.'%'.join("%' OR '%", $keywords)."%'";
 
 $key = $_GET['keyword'];
+switch ( $_GET['type']) {
+    case 'song':
+        $song='selected';
+        $vote='';
+        break;
+    case 'vote':
+        $vote='selected';
+        $song='';
+        break;
+    case 'user':
+        $user='selected';
+        $song='';
+        $vote='';
+        break;
+    
+    default:
+        # code...
+        break;
+}
 ?>
 <form action="./center.php" method="get" id="type">
     <input type="hidden" name="do" value="search">
     <select name="type">
         <option value="all">全部</option>
-        <option value="song">歌曲/歌手</option>
-        <option value="vote">投票主題/類型</option>
+        <option value="song" <?=$song;?>>歌曲/歌手</option>
+        <option value="vote" <?=$vote;?>>投票主題/類型</option>
         <?php
         if ($_SESSION['login']['level'] == 0) {
-            echo "<option value='user'>使用者名稱/帳號/email</option>";
+            echo "<option value='user' $user>使用者名稱/帳號/email</option>";
         }
         ?>
     </select>
@@ -82,9 +101,10 @@ $key = $_GET['keyword'];
 
         //     $type= 'user';
         // };
-        $type = isset($result['subject']) ? 'subject.jpg' : (isset($result['song_name']) ? $result['cover'] : 'user.jpg');
+        $type = isset($result['subject']) ? 'subject.png' : (isset($result['song_name']) ? $result['cover'] : 'user.png');
+        echo $type;
         echo "<tr>
-            <td><img src='./upload/$type'></td>
+            <td><img src='./upload/$type' clsaa='img-fluid' width=50%></td>
             <td>$result[1]</td>
             <td>$result[2]</td>
             <td>$result[3]</td>

@@ -1,5 +1,9 @@
 <?php
 include_once "../db/base.php";
+$_POST['description'] = str_replace("'", "\'", $_POST['description']);
+$_POST['name'] = str_replace("'", "\'", $_POST['name']);
+echo $_POST['name'];
+
     $song = find('songs', $_POST['id']);
     $tmp = [
         'song_name' => $_POST['name'],

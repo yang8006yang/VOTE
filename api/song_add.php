@@ -1,13 +1,17 @@
 <?php
 include_once "../db/base.php";
 if(!empty($_FILES['cover'])){
+   
     if ($_FILES['cover']['error'] == 0) {
-        
+        $_POST['description'] = str_replace("'", "\'", $_POST['description']);
+        $_POST['name'] = str_replace("'", "\'", $_POST['name']);
+
         $file_str_array = explode(".", $_FILES['cover']['name']);
         $sub = array_pop($file_str_array);
         $file_name = date("Ymdhis") . "." . $sub;
         move_uploaded_file($_FILES['cover']['tmp_name'], "../upload/". $file_name);
-        
+
+
         $song=['song_name'=>$_POST['name'],
         'description'=>$_POST['description'],
         'singer'=>$_POST['singer'],
@@ -21,6 +25,9 @@ if(!empty($_FILES['cover'])){
     to('../center.php?do=song_add&error=1');
 }
 }else{
+    $_POST['description'] = str_replace("'", "\'", $_POST['description']);
+    $_POST['name'] = str_replace("'", "\'", $_POST['name']);
+    
     $song=['song_name'=>$_POST['name'],
         'description'=>$_POST['description'],
         'singer'=>$_POST['singer'],
