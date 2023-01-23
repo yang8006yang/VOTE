@@ -3,9 +3,9 @@
 $(window).scroll(function () {
   let screenHeight = $(window).height();
   let scrollTop = $(window).scrollTop();
-  console.log(scrollTop);
-  console.log('H');
-  console.log(screenHeight);
+  // console.log(scrollTop);
+  // console.log('H');
+  // console.log(screenHeight);
 
   if (scrollTop > (screenHeight / 6)) {
     $('#newArrival').css('backgroundColor', '#d7b700');
