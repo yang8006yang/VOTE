@@ -113,9 +113,14 @@ $voteType=[
     <?php
     foreach ($res as $result) {
         $type = isset($result['subject']) ? 'subject.png' : (isset($result['song_name']) ? $result['cover'] : 'user.png');
+        $atype = isset($result['subject']) ? 'survey_vote' : (isset($result['song_name']) ? 'song' : 'user_list');
 
         echo "<tr class='t-bottom-white'>
-            <td><img src='./upload/$type' clsaa='img-fluid' width=25%></td>
+            <td>
+                <a href='./center.php?do=$atype&id={$result[0]}'>
+                 <img src='./upload/$type' clsaa='img-fluid' width=25%>
+                </a>
+            </td>
             <td width=25%>$result[1]</td>";
         if($type=='subject.png'){
           echo  "<td width=25%>".$voteType[$result[2]]."</td>";

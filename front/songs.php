@@ -11,7 +11,9 @@ foreach ($songs as $song) {
 ?>
         <div class="card bg-dark text-white d-inline-block" style="width: 24%;">
             <div class="card-body d-flex flex-column " style="min-height: 350px;">
-                <img class="card-img-top" src="./upload/<?= $song['cover'] ?>" alt="Card image">
+<a href="?do=song&id=<?= $song['id'] ?>">
+    <img class="card-img-top" src="./upload/<?= $song['cover'] ?>" alt="Card image">
+</a>
                 <h4 class="card-title flex-grow-1"><?= $song['song_name'] ?></h4>
                 <p class="card-text mt-3"><?= $song['singer'] ?></p>
                 <a href="./api/addSong2List.php?id=<?= $song['id'] ?>&list_id=<?= $_GET['list_id'] ?>" class="card-link">
@@ -37,7 +39,7 @@ $songs=all('songs',"LIMIT $start,$div");
 foreach ($songs as $song) {
     echo "<table width='90%' class='mx-auto mt-1 mb-1'>
         <tr>
-            <td width='10%'><img src='./upload/{$song['cover']}' alt='∮' width='50px'></td>
+            <td width='10%'><a href='?do=song&id={$song['id']}'><img src='./upload/{$song['cover']}' alt='∮' width='50px'></a></td>
             <td>
                 <div>{$song['song_name']}</div>
                 <div>{$song['singer']}<div>

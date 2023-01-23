@@ -8,11 +8,12 @@ $opt=find('survey_options',$id);
 $vote=$opt['vote']+1;
 $subject_id=$opt['subject_id'];
 $sub=find('survey_subjects',$subject_id);
-$vote=$sub['vote']+1;
+$voteSub=$sub['vote']+1;
+
 $chk=find('survey_log',['user'=>$_SESSION['login']['id'],'subject_id'=>$sub['id']]);
 if(empty($chk)){
     update('survey_options',['vote'=>$vote],$id);
-    update('survey_subjects',['vote'=>$vote],$sub['id']);
+    update('survey_subjects',['vote'=>$voteSub],$sub['id']);
     
     //偵測使用者端IP,並取得IP
     if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet

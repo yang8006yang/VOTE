@@ -6,7 +6,7 @@
             <hr>
             <div class="text-start w-50 mx-auto mt-5">
                 <label for="acc">帳號</label>
-                <input class="form-control" type="text" name="acc" placeholder="用戶名稱或電子郵件地址"  required>
+                <input class="form-control" type="text" name="acc" placeholder="帳號、用戶名稱或電子郵件地址"  required>
                 <label for="pw">密碼</label>
                 <input class="form-control" type="password" name="pw" placeholder="密碼" required>
                 <input type="submit" value="登入" class="btn btn-warning ">

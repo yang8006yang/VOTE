@@ -62,7 +62,7 @@ if (!isset($_SESSION['login'])) {
                     <li><a href='center.php?do=myVote'>查看我的投票</a></li>
                     <li><a href='center.php?do=survey_result'>查看投票結果</a></li>";
                         echo "</ul>";
-                        echo "<li><a href='center.php?do=playlist_add'>建立播放清單</a></li>";
+                        echo "<li><a href='center.php?do=playlist_add'>建立歌曲清單</a></li>";
                         $playlists = all('playlists', ["user_id" => $_SESSION['login']['id']]);
                         foreach ($playlists as $list) {
                             echo "<li><a href='center.php?do=playlist&id={$list['id']}&name={$list['list_name']}'>" . $list['list_name'] . "</a></li>";

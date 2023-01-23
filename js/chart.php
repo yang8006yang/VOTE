@@ -8,10 +8,10 @@
         let title = document.getElementById("title");
         let labels = [];
         let displayLegend;
-        if (<?= $subject[0]['chart']; ?> == '1') {
-            displayLegend = false;
-        } else {
+        if (<?= $subject[0]['chart']; ?> == '2') {
             displayLegend = true;
+        } else {
+            displayLegend = false;
         }
 
         let ctx = document.getElementById('myChart').getContext('2d');

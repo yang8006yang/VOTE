@@ -31,6 +31,9 @@ if(isset($_GET['success']) && $_GET['success']=='1'){
         } else {
             $users = all("users");
         }
+        if(isset($_GET['id'])){   
+            $users = all("users", ['id' => $_GET['id']]);
+        }
         foreach ($users as $user) {
         ?>
             <tr>

@@ -23,13 +23,17 @@ if (empty($chk)) {
     </a></div>";
     // dd($songs);
     foreach ($songs as $song) {
-        echo "<table width='90%' class='mx-auto mt-2'>
+        echo "
+        <table width='90%' class='mx-auto mt-2'>
             <tr>
-                <td width='10%'><img src='./upload/{$song['cover']}' alt='∮' width='50px'></td>
-                <td>
-                    <div>{$song['song_name']}</div>
-                    <div>{$song['singer']}<div>
-                </td>
+            <td width='10%'>
+                <a href='https://open.spotify.com/track/{$song['yt_link']}' target='blank'>
+                <img src='./upload/{$song['cover']}' alt='∮' width='50px'></td>
+                </a>
+            <td>
+                <div>{$song['song_name']}</div>
+                <div>{$song['singer']}<div>
+            </td>
                 <td width='10%'>
                 <a href='./api/delSong4List copy.php?id={$song['id']}&list_id={$_GET['id']}&name={$_GET['name']}'>
                 <i class='fa-solid fa-minus p-1' style='border: 1px solid white;border-radius:50%'></i>
@@ -39,4 +43,3 @@ if (empty($chk)) {
         </table>";
     }
 }
-?>

@@ -1,11 +1,11 @@
-<h1 class="mt-3 ms-3">為你推薦</h1>
+<h1 class="mt-3 ms-3">HI ! <?=$_SESSION['login']['name'];?>&nbsp; 為你推薦</h1>
 <div class="d-flex ms-2">
     <?php
     $upsong = q("SELECT * FROM `songs` WHERE `id` IN('3','4','6')");
     foreach ($upsong as $song) {
     ?>
         <div class="col m-2">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/<?= $song['yt_link']; ?>" width="100%" height="252" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/<?= $song['yt_link']; ?>?utm_source=generator" width="100%" height="252" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
     <?php
     }
