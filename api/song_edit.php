@@ -19,7 +19,7 @@ echo $_POST['name'];
     ];
 
     
-    if(!empty($_POST['cover'])){
+    if($song['cover']!=$_POST['cover']){
         if($_FILES['cover']['error'] == 0){
 
             move_uploaded_file($_FILES['cover']['tmp_name'], "../upload/" . $song['cover']);

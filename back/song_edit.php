@@ -23,7 +23,8 @@ $song = find('songs', $_GET['id']);
                 <input type="text" name="type" id="type" value="<?= $song['type']; ?>">
             </div>
             <div><label for="cover">封面 : </label>
-                <input type="file" name="cover" id="cover">
+                <input type="file" name="cover" id="cover" accept="image/*">
+                <img src="./upload/<?=$song['cover'];?>" alt="" width="300px" id="preview">
 </div>
                 <div><label for="description" style="vertical-align: top;">描述 : </label>
                     <textarea name="description" id="description" cols="30" rows="10"><?= $song['description']; ?></textarea>
@@ -36,3 +37,15 @@ $song = find('songs', $_GET['id']);
                 </form>
     </div>
 </div>
+
+<script>
+    $(function(){
+
+        $('#cover').on('change',function(){
+            let file= this.files[0];
+            $("#preview").attr('src',URL.createObjectURL(file));
+
+        })
+        
+    })
+</script>

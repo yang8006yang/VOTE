@@ -30,10 +30,11 @@ if (isset($_GET['error'])) {
             </div>
             <div>
                 <label for="cover" style="cursor: pointer;">封面  <span style="color: #242424;">*</span>
-                <input type="file" name="cover" id="cover" style="display:none;">
+                <input type="file" name="cover" accept="image/*" id="cover" style="display:none;">
                 <i class="fa-solid fa-image" >上傳圖片</i>
                 </label>
             </div>
+            <div id="preview"></div>
             <div class="text-center col-12 mt-3">
                 <input type="submit" value="確定新增" class="submitBtn">
                 <input type="reset" value="重置" class="btn">
@@ -41,3 +42,16 @@ if (isset($_GET['error'])) {
         </form>
     </div>
 </div>
+
+<script>
+    $(function(){
+
+        $('#cover').on('change',function(){
+            let file= this.files[0];
+            let url=URL.createObjectURL(file);
+            $("#preview").append("<img src='" + url + "'  alt='你的圖片' style='width: 300px;'>");
+
+        })
+        
+    })
+</script>
