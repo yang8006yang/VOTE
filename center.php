@@ -39,15 +39,16 @@ if (!isset($_SESSION['login'])) {
                         <input type="hidden" name="do" value="search">
                         <input type="hidden" name="type" value="all">
                         <div class="d-flex align-item-center justify-content-center texr-center">
-                            <input type="search" id="keyword" name="keyword" placeholder="  search" style="margin-right: -1.8rem;"></input>
-                            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <input type="search" id="keyword" name="keyword" placeholder="  search" style="margin-right: -2.2rem;"></input>
+                            <button type="submit" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                     </form>
                 </li>
                 <li><a href="" data-bs-toggle="collapse" data-bs-target="#vote">投票 ▼</a></li>
                 <ul id="vote" class="collapse">
                     <?php
-                    if ($_SESSION['login']['acc'] == 'admin' && $_SESSION['login']['pw'] == 'admin') {
+                     $adminChk = find('users',['acc'=>$_SESSION['login']['acc'],'level'=>0]);
+                     if (!empty($adminChk)) {
                         echo "<li><a href='center.php?do=survey_add'>新增投票</a></li>
                     <li><a href='center.php?do=survey'>編輯投票</a></li>
                     <li><a href='center.php?do=survey_result'>查看投票結果</a></li>";
@@ -80,8 +81,7 @@ if (!isset($_SESSION['login'])) {
 
                 $do = $_GET['do'] ?? 'main';
                 // ?? => 有就是?前面的 沒有就後面的
-
-                if ($_SESSION['login']['acc'] == 'admin' && $_SESSION['login']['pw'] == 'admin') {
+                if (!empty($adminChk)) {
                     $path = $backPath;
                     // $file = "./back/" . $do . ".php";
                 } else {

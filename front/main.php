@@ -1,3 +1,15 @@
+<?php
+    $voting = all('survey_subjects', 'ORDER BY `vote` DESC LIMIT 1');
+    $subject = all('survey_subjects', ' WHERE `active`=0 && `vote`!=0 ORDER BY `vote` DESC LIMIT 1');
+    $opts = all('survey_options',['subject_id' => $subject[0]['id']]);
+    $xValues = [];
+    $yValues = [];
+    foreach ($opts as $opt) {
+        array_push($xValues, $opt['opt']);
+        array_push($yValues, $opt['vote']);
+    }
+    ?>
+
 <div style="position: relative;" class="d-flex">
     <div class="col-sm-6 left d-flex flex-column justify-content-center ps-5 pt-5">
         <div class="title">
@@ -33,27 +45,26 @@
             Everyone Voting
         </div>
         <div class="box mx-auto mt-3 d-flex ">
-            <?php
-            $array = all('survey_subjects', 'ORDER BY `vote` DESC LIMIT 1');
-            ?>
             <div class="d-flex flex-column justify-content-center ps-5">
-                <div class="fs-2 bold pt-5"><?= $array[0]['subject']; ?></div>
+                <div class="fs-2 bold pt-5"><?= $voting[0]['subject']; ?></div>
                 <div class="line " style="background-color:rgb(27, 36, 37);width: 20vw;"></div>
-                <div class="pb-5"><?= $array[0]['content']; ?></div>
+                <div class="pb-5"><?= $voting[0]['content']; ?></div>
             </div>
             <div class="d-flex flex-column justify-content-center mx-auto bold">
                 參與人數
-                <div class="fs-1"> <?= $array[0]['vote']; ?></div>
+                <div class="fs-1"> <?= $voting[0]['vote']; ?></div>
             </div>
         </div>
     </div>
 </div>
 <figure class="marquee marquee--mantis" data-text=" ! NEWS !  VOTE !  SONG !"></figure>
-<div id="newArrival" style="background-color:rgb(27, 36, 37); height: 100vh;">
 
+<!-- =========================NewArrival================================-->
+<div id="newArrival" style="background-color:rgb(27, 36, 37); height: 100vh;">
+    
     <figure class="marquee-small marquee--s pt-5" data-text="NEW ARRIVAL" style="rotate: 5deg;"></figure>
     <div class="position-relative">
-        <div style="height:70vh;" class="owl-carousel owl-theme d-flex mt-xxl-5 pt-lg-5 justify-content-around overflow-hidden flex-wrap">
+        <div style="height:70vh;" class="owl-carousel owl-theme d-flex mt-xxl-5 pt-lg-5 justify-content-around overflow-hidden flex-wrap align-items-center">
             <?php
             $array = all('songs', ['active' => '1'], 'ORDER BY `update_at` DESC LIMIT 5');
             // print_r($array);
@@ -73,6 +84,23 @@
     </div>
     <figure class="marquee-small marquee--s" data-text="NEW ARRIVAL" style="rotate: 5deg;"></figure>
 </div>
+
+<!-- =========================Survey================================-->
+<div id="surveyComped">
+    <img src="./img/survey-com-01.png" alt="" class="img-fluid w-75" id="surveyText">
+</div>
+<div class="p-2 pb-5" style="background-color: rgb(27, 36, 37);">
+    <h1 id="title" class="bold text-white text-center p-5"><?= $subject[0]['subject']; ?></h1>
+    <canvas id="myChart" style="width:100%;max-width:1200px;margin:0 auto"></canvas>
+</div>
+<a href="index.php?do=reg">
+    <div class="impact fs-1 text-center p-5" style="background-color: #d7b700;">
+        Join Us !!   Check out more!!
+    </div>
+</a>
+
+<!-- =========================FOOTER================================-->
+
 <footer id="contact">
     <div class="row align-items-center mx-auto p-5 text-center text-light">
         <div class="col-sm-6 d-flex flex-column text-center">
@@ -107,7 +135,6 @@
 </link>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-<script>
-    
-</script>
+<?php
+include_once "./js/chart.php";
+?>

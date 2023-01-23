@@ -7,6 +7,7 @@ if(isset($_GET['id'])){
 }else{
     to("center.php?do=survey&error");
 };
+
 ?>
 
 <h1>編輯投票</h1>
@@ -14,11 +15,20 @@ if(isset($_GET['id'])){
 <label for="subject">主題</label>
     <input type="text" name="subject" id="subject" required value="<?=$subject['subject'];?>">
     <select name="type" id="">
-        <option value="1" <?php echo($subject['type']=1)?'selected':'';?>>歌曲</option>
-        <option value="2" <?php echo($subject['type']=2)?'selected':'';?>>歌手</option>
-        <option value="3" <?php echo($subject['type']=3)?'selected':'';?>>調查</option>
-        <option value="4" <?php echo($subject['type']=4)?'selected':'';?>>其他</option>
+        <option value="1" <?php echo($subject['type']==1)?'selected':'';?>>歌曲</option>
+        <option value="2" <?php echo($subject['type']==2)?'selected':'';?>>歌手</option>
+        <option value="3" <?php echo($subject['type']==3)?'selected':'';?>>調查</option>
+        <option value="4" <?php echo($subject['type']==4)?'selected':'';?>>其他</option>
     </select>
+    <div>
+                <label for="'chart">圖表類型</label>
+                <select name="chart" id="" style="text-align: center;">
+                    <option value="1" <?php echo($subject['chart']==1)?'selected':'';?>>柱狀圖</option>
+                    <option value="2" <?php echo($subject['chart']==2)?'selected':'';?>>環狀圖</option>
+                    <option value="3" <?php echo($subject['chart']==3)?'selected':'';?>>折線圖</option>
+                    <option value="4" <?php echo($subject['chart']==4)?'selected':'';?>>複合圖(柱狀+折線圖)</option>
+                </select>
+            </div>
     <label for="content">內文</label>
     <textarea name="content" id="content" cols="30" rows="10"><?=$subject['content'];?></textarea>
     <input type="hidden" name="id" value="<?=$_GET['id'];?>">

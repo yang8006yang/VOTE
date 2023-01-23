@@ -5,7 +5,7 @@ $list=['list_name'=>$_POST['name'],
     'description'=>$_POST['description'],
     'user_id'=>$_SESSION['login']['id']];
 
-if(!empty($list['name'])){
+if(!empty($list['list_name'])){
     insert('playlists',$list);
 };
     

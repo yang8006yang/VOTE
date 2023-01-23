@@ -3,7 +3,6 @@ include_once "../db/base.php";
 
 $keyword=$_POST['keyword'];
 $keywords=explode(" ",$keywords);
-var_dump($keywords);
 
 $sqlS = '';
 $sqlV = '';

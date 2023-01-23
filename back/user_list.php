@@ -1,36 +1,45 @@
 <div class="mx-auto w-50 mt-3">
-    <h1><a href="?do=user_list&level=1">會員列表</a></h1>
-    <h1><a href="?do=user_list&level=0">管理者列表</a></h1>
+    <div class="card-form text-center">
+        <form action="./api/admin_add.php" method="post">
+            <label for="id">ID : </label>
+            <input type="text" name="id" id="id" required width="100px">
+            <input type="submit" value="設為管理員" class="submitBtn text-center">
+        </form>
+        <div class="line"></div>
+        <a href="?do=user_list&level=1"><input type="button" value="會員列表" class="btn"></a>
+        <a href="?do=user_list&level=0"><input type="button" value="管理者列表" class="btn"></button></a>
+    </div>
     <table>
-        <thead>
-            <td>id</td>
-            <td>name</td>
-            <td>acc</td>
+        <thead class="t-bottom-white">
+            <td width=10%>id</td>
+            <td width=40%>用戶名</td>
+            <td width=40%>帳號</td>
             <td></td>
         </thead>
         <?php
-        if(isset($_GET['level'])){
+        if (isset($_GET['level'])) {
             if ($_GET['level'] == 0) {
                 $users = all("users", ['level' => '0']);
             } else {
                 $users = all("users", ['level' => '1']);
             }
-        }else{
-            $users = all("users");}
+        } else {
+            $users = all("users");
+        }
         foreach ($users as $user) {
-                    ?>
-                <tr>
-                    <td><?= $user['id']; ?></td>
-                    <td><?= $user['name']; ?></td>
-                    <td><?= $user['acc']; ?></td>
-                    <td><a href="./api/del.php?id=<?= $user['id'] ?>&table=user" class="card-link">刪除</a></td>
-                </tr>
-                <?php
-            }
+        ?>
+            <tr>
+                <td><?= $user['id']; ?></td>
+                <td><?= $user['name']; ?></td>
+                <td><?= $user['acc']; ?></td>
+            <?php
+            if($user['name']!='admin'){
+                echo "<td><a href='./api/del.php?id=<?= {$user['id']} ?>&table=user' class='btn btn-sm btn-danger mt-1'>刪除</a></td>";
+            }else{
+                echo "<td><a href='#' class='btn btn-sm btn-secondary mt-1'>刪除</a></td>";
+            }?>
+            </tr>
+        <?php
+        }
         ?>
 </div>
-<form action="./api/admin_add.php" method="post">
-<label for="id">ID : </label>    
-<input type="text" name="id" id="id">
-<input type="submit" value="設為管理員">
-</form>

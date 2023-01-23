@@ -1,6 +1,7 @@
 @media only screen and (max-width: 1366px){ 
   html{
 font-size: 12px;
+overflow-x: hidden; 
   }}
 a{
     text-decoration: none;
@@ -14,7 +15,6 @@ a{
 .bold{
   font-weight: 900;
 }
-
 
 
 
@@ -33,12 +33,37 @@ a{
     }
 }
 
+nav li{
+  position: relative;
+}
+
+nav li a::before{
+  content: "";
+  position: absolute;
+  height: 2px;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  background: currentColor;
+  transition: transform 0.25s ease-out;
+}
+
+nav li a:hover:before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
 
 /*=================INDEX-MAIN===================  */
+
 .mainImg{
     left: 32vw;
     top: 10vh;
   }
+
   .left{
     background-color: #d7b700;
     width: 50vw;
@@ -215,6 +240,24 @@ a{
   }
 
 
+
+  /*=================SURVEY===================  */
+  #surveyComped{
+    background-image: url(../img/survey-com-01.jpg);
+    height: 500px;
+    width: 98.8vw;
+    border-top: 3px solid rgb(27, 36, 37);
+    /* border-bottom: 1px solid rgb(27, 36, 37); */
+    display: flex;
+    justify-content: center;
+  }
+
+  #surveyText{
+    transition: 1.5s;
+    opacity: 0;
+    scale: 0.1;
+  }
+  
 
   /*=================FOOTER===================  */
 footer{

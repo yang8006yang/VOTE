@@ -16,6 +16,10 @@ switch ($_GET['table']) {
         $table='users';
         $do='user_list&level=1';
         break;
+    case 'playlist':
+        $table='playlists';
+        $do="";
+        break;
     
     default:
         # code...

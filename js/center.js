@@ -8,3 +8,6 @@ $(window).scroll(function () {
     }
 })
 
+$('#goBack').on('click',function () {
+    window.history.back(-1);
+})

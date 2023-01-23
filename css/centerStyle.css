@@ -1,65 +1,80 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-.impact{
-  font-family: Impact, 'Secular One', 'Arial Narrow Bold', sans-serif; 
+
+.impact {
+  font-family: Impact, 'Secular One', 'Arial Narrow Bold', sans-serif;
 }
-.bold{
+
+.bold {
   font-weight: 900;
 }
 
-a{
+a {
   text-decoration: none;
   color: rgb(251, 251, 251);
 }
-body{
-    background-color: #242424;
-    color: #eee;
+
+a:hover {
+  cursor: pointer;
 }
-aside{
-    float: left;
-    /* width: 25rem; */
-    /* height: 100vh; */
-    background-color: #121212;
-    z-index: 100;
-    overflow-y: scroll;
-    position: fixed;
+
+body {
+  background-color: #242424;
+  color: #eee;
 }
-.asideNav{
-    /* width: 25rem; */
-    height: 100vh;
-    margin: 5rem auto;
-    text-align: center;
-    display: block;
-  }
-  nav{
-    background-color: rgb(23, 23, 23);
-    height: 5rem;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100vw;
-    z-index: 1;
-    
-  }
-nav a{
+
+
+/* =====================TOP NAV======================== */
+nav {
+  background-color: rgb(23, 23, 23);
+  height: 5rem;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
+
+}
+
+nav a {
   line-height: 2.5rem;
 }
 
-ul{
+/* =====================ASIDE======================== */
+aside {
+  float: left;
+  /* width: 25rem; */
+  /* height: 100vh; */
+  background-color: #121212;
+  z-index: 100;
+  overflow-y: scroll;
+  position: fixed;
+}
+
+.asideNav {
+  /* width: 25rem; */
+  height: 100vh;
+  margin: 5rem auto;
+  text-align: center;
+  display: block;
+}
+
+ul {
   padding-left: 0;
   list-style-type: none;
 }
 
-li{
+li {
   margin: 2.5rem 0;
 }
-#vote li{
+
+#vote li {
   margin: 1rem 0;
 }
 
-main{
+main {
   height: 100vh;
   overflow: scroll;
 }
@@ -69,35 +84,39 @@ main{
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #121212;
 }
+
 /* 捲軸寬度 */
 #scroll::-webkit-scrollbar {
   width: 6px;
   background-color: black;
 }
+
 /* 捲軸本體顏色 */
 #scroll::-webkit-scrollbar-thumb {
   background-color: #ababab;
 }
 
 /* 搜尋框 */
-#keyword{
+#keyword {
   border-radius: 20px;
   /* background-color:  #242424;; */
   /* display: none; */
 }
-form button{
+
+#search-icon {
   border: 0;
-  background-color:rgb(255, 255, 255,0);
+  background-color: rgb(255, 255, 255, 0);
 }
 
 /* 投票選單區 */
-.asideNav li{
+.asideNav li {
   font-size: 18px;
 }
+
+/* =====================MAIN======================== */
+
 /* 首頁卡片 */
-.card_vote{
-  /* background-color: rgb(23, 23, 23); */
-  /* background-image: linear-gradient(to top, #f9d423 0%, #d8d6d0 100%); */
+.card-vote {
   background-image: linear-gradient(to right, #C30D23 0%, #d7b700 100%);
   color: rgb(255, 255, 255);
   transition: all .3s;
@@ -105,8 +124,8 @@ form button{
   border: 0;
 
 }
-.card_vote:hover{
-  /* color: #d7b700; */
+
+.card-vote:hover {
   font-weight: 600;
   box-shadow: 0px 0px 30px 1px rgba(234, 66, 66, 0.3);
 }
@@ -117,11 +136,92 @@ form button{
   transition: all .2s;
   border-radius: 12px;
   border: 2px solid rgb(54, 54, 54);
- }
-.card-body:hover {
+}
+
+.card-main:hover {
   transform: scale(0.99);
   border-radius: 12px;
   color: white;
- }
+}
+
+/* =====================TABLE======================== */
+.t-bottom-white{
+  height: 5rem; 
+  border-bottom: 1px solid white;
+}
+
+/* =====================ADD/EDIT FORM======================== */
+.card-form {
+  background-color: #242424;
+  border: 0;
+}
+
+.card-form .card-body {
+  width: 50vw;
+  background-color: #242424;
+  border: 0;
+}
+
+.card-form input,
+textarea,
+select {
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  margin: 0.8rem 3rem;
+  width: 65%;
+  box-shadow: 5px 5px 0px 0px rgb(0, 0, 0, 0.3);
+  padding: 0.5rem 0.5rem;
+}
 
 
+.card-form .btn,
+.card-form .submitBtn,
+#addOpt,
+.fa-image {
+
+  background-color: #d7b700;
+  color: #eee;
+  font-weight: 900;
+  margin: 0.5rem 0.5rem;
+  padding: 0.5rem 0.5rem;
+  box-shadow: 2px 5px 0px 0px #000000;
+  width: 45%;
+  border: 2px solid black;
+  border-radius: 12px;
+}
+
+#addOpt {
+  margin: 0 auto;
+}
+
+.card-form .submitBtn{
+  background-color: #C30D23;
+}
+
+.fa-image {
+  width: 10vw;
+  border: 2px solid #000000;
+}
+
+.card-form .btn:active,
+#addOpt:active {
+  transform: translateY(5px);
+  box-shadow: 0px 0px 0px 0px #000000;
+}
+
+
+.line {
+  height: 3.5px;
+  background-color: white;
+  border-radius: 2px;
+  width: 100%;
+  margin: 1.5rem auto;
+}
+
+/* =====================PAGES======================== */
+.now{
+  font-size: large;
+  font-weight: bold;
+  color: #C30D23;
+}

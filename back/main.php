@@ -18,8 +18,8 @@
     $surveys = all('survey_subjects', ['active' => 1], 'LIMIT 5');
     foreach ($surveys as $survey) {
     ?>
-        <a href="./center.php?do=survey_vote&id=<?= $survey['id']; ?>" class="col card m-3 card_vote" style="border-radius:12px">
-            <div class="card-body">
+        <a href="./center.php?do=survey_vote&id=<?= $survey['id']; ?>" class="col card m-3 card-vote" style="border-radius:12px">
+            <div class="card-body card-main">
                 <h4 class="card-title bold"><?= $survey['subject'] ?></h4>
                 <hr>
                 <p class="card-text"><?= $survey['content'] ?></p>
@@ -37,8 +37,8 @@
     $closeSurveys = q("SELECT * FROM `survey_subjects` WHERE `vote`>'0' && `active` = '0' LIMIT 5");
     foreach ($closeSurveys as $survey) {
     ?>
-        <a href="./center.php?do=survey_result&id=<?= $survey['id']; ?>" class="col card m-3 card_vote" style="border-radius:12px">
-            <div class="card-body">
+        <a href="./center.php?do=survey_result&id=<?= $survey['id']; ?>" class="col card m-3 card-vote" style="border-radius:12px">
+            <div class="card-body card-main">
                 <h4 class="card-title bold"><?= $survey['subject'] ?></h4>
                 <hr>
                 <p class="card-text"><?= $survey['content'] ?></p>

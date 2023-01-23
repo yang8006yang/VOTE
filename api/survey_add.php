@@ -5,7 +5,8 @@ $subject=['subject'=>$_POST['subject'],
 'type'=>$_POST['type'],
 'content'=>$_POST['content'],
 'vote'=>0,
-'active'=>0
+'active'=>0,
+'chart'=>$_POST['chart']
 ];
 insert('survey_subjects',$subject);
 
@@ -19,7 +20,8 @@ if(isset($_POST['opt'])){
             $tmp=[
                 'opt'=>$opt,
                 'subject_id'=>$subject_id,
-                'vote'=>0];
+                'vote'=>0,
+            ];
                 insert('survey_options',$tmp);
         }
     }

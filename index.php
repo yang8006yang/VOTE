@@ -21,16 +21,16 @@ if(isset($_GET['error']) && $_GET['error']=='nolog'){
             <div class="collapse navbar-collapse justify-content-center text-center" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="#" style="color: white; font-size: 1.2rem; padding:0 5rem;" data-bs-toggle="popover" data-bs-content="We Are Music Spot! Let' Vote!" data-bs-placement="bottom" data-bs-trigger="focus">ABOUT</a>
+                        <a class="nav-link font-weight-bold nav-hover" href="#" style="color: white; font-size: 1.2rem; margin:0 5rem;" data-bs-toggle="popover" data-bs-content="We Are Music Spot! Let' Vote!" data-bs-placement="bottom" data-bs-trigger="focus">ABOUT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="#newArrival" style="color: white; font-size: 1.2rem; padding:0 5rem;">NEW SONG</a>
+                        <a class="nav-link font-weight-bold" href="#newArrival" style="color: white; font-size: 1.2rem; margin:0 5rem;">NEW SONG</a>
                     </li>
                     <li class="nav-item">
-                <a class="nav-link font-weight-bold" href="#contact" style="color: white; font-size: 1.2rem; padding:0 5rem;">CONTACT</a>
+                <a class="nav-link font-weight-bold" href="#contact" style="color: white; font-size: 1.2rem; margin:0 5rem;">CONTACT</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link font-weight-bold" href="./center.php" style="color: white;font-size: 1.2rem; padding:0 5rem;">CENTER</a>
+                <a class="nav-link font-weight-bold" href="./center.php" style="color: white;font-size: 1.2rem; margin:0 5rem;">CENTER</a>
             </li>
         </ul>
         

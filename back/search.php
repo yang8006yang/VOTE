@@ -57,13 +57,20 @@ switch ($type) {
 
 $key = $_GET['keyword'];
 switch ( $_GET['type']) {
+    case 'all':
+        $song='';
+        $vote='';
+        $user='';
+        break;
     case 'song':
         $song='selected';
         $vote='';
+        $user='';
         break;
     case 'vote':
         $vote='selected';
         $song='';
+        $user='';
         break;
     case 'user':
         $user='selected';
@@ -75,8 +82,14 @@ switch ( $_GET['type']) {
         # code...
         break;
 }
+$voteType=[
+    '1'=>'類型: 歌曲',
+    '2'=>'類型: 歌手',
+    '3'=>'類型: 調查',
+    '4'=>'類型: 其他',
+]
 ?>
-<form action="./center.php" method="get" id="type">
+<form action="./center.php" method="get" id="type" class="">
     <input type="hidden" name="do" value="search">
     <select name="type">
         <option value="all">全部</option>
@@ -90,24 +103,20 @@ switch ( $_GET['type']) {
     </select>
     <input type="hidden" value="<?= $key; ?>" name="keyword">
 </form>
-<table>
+<table class="w-75 ms-5" style="">
     <?php
     foreach ($res as $result) {
-        // if(isset($result['subject'])){
-        //     $type= 'subject';
-        // }elseif(isset($result['song_name'])){
-        //     $type= 'song';
-        // }else{
-
-        //     $type= 'user';
-        // };
         $type = isset($result['subject']) ? 'subject.png' : (isset($result['song_name']) ? $result['cover'] : 'user.png');
-        echo $type;
-        echo "<tr>
-            <td><img src='./upload/$type' clsaa='img-fluid' width=50%></td>
-            <td>$result[1]</td>
-            <td>$result[2]</td>
-            <td>$result[3]</td>
+
+        echo "<tr class='t-bottom-white'>
+            <td><img src='./upload/$type' clsaa='img-fluid' width=25%></td>
+            <td width=25%>$result[1]</td>";
+        if($type=='subject.png'){
+          echo  "<td width=25%>".$voteType[$result[2]]."</td>";
+        }else{
+            echo  "<td width=25%>$result[2]</td>";
+        }
+        echo    "<td width=25%>$result[3]</td>
         </tr>";
     };
     ?>
