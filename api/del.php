@@ -27,4 +27,4 @@ switch ($_GET['table']) {
 }
 
 del($table,$id);
-to("../center.php?do=$do");
+to("../center.php?do=$do&success=1");

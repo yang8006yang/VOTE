@@ -2,7 +2,7 @@
     <div class=" mx-auto d-flex flex-column">
         <h1 class=" impact bold text-start">新增投票主題</h1>
         <div class="line"></div>
-        <form action="./api//survey_add.php" method="post" class="w-100">
+        <form action="./api/survey_add.php" method="post" class="w-100">
             <label for="subject">主題 <span style="color: #242424;">*</span></label>
             <input type="text" name="subject" id="subject" required placeholder="未命名的主題">
             <div>

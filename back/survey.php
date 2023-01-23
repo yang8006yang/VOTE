@@ -1,3 +1,8 @@
+<?php
+if(isset($_GET['success']) && $_GET['success']=='1'){
+    alert('刪除成功!');
+}
+?>
 <div class="mx-auto w-50 mt-3">
     <h1>投票列表</h1>
     <?php

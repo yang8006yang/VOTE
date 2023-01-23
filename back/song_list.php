@@ -1,3 +1,8 @@
+<?php
+if(isset($_GET['success']) && $_GET['success']=='1'){
+    alert('刪除成功!');
+}
+?>
 <div class="mx-auto mt-3 d-flex justify-content-center flex-wrap" style="width: 90%;">
     <h1 class="col-12">歌曲列表</h1>
     <?php

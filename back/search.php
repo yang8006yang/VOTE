@@ -3,6 +3,7 @@ include_once "./db/base.php";
 
 // var_dump($keywords);
 
+// 生成送到資料庫SQL語法的FUN case
 function search($table)
 {
     $key = $_GET['keyword'];
@@ -27,6 +28,8 @@ function search($table)
     $sql = $sql . join(" OR ", $array);
     return q($sql);
 };
+
+// 依分類 使用上面的search FUN 產生結果
 $type = $_GET['type'];
 switch ($type) {
     case 'all':
@@ -50,12 +53,13 @@ switch ($type) {
         break;
 }
 // dd($res);
-
-
 // $sqlS=$sqlS.'%'.join("%' OR '%", $keywords)."%'";
 // $sqlV=$sqlV.'%'.join("%' OR '%", $keywords)."%'";
 
+// 存關鍵字放到input，換分類的時候才不會不見
 $key = $_GET['keyword'];
+
+// 控制下拉選單狀態
 switch ( $_GET['type']) {
     case 'all':
         $song='';
@@ -82,6 +86,8 @@ switch ( $_GET['type']) {
         # code...
         break;
 }
+
+// 為投票主題分類轉譯 設的陣列
 $voteType=[
     '1'=>'類型: 歌曲',
     '2'=>'類型: 歌手',
@@ -103,7 +109,7 @@ $voteType=[
     </select>
     <input type="hidden" value="<?= $key; ?>" name="keyword">
 </form>
-<table class="w-75 ms-5" style="">
+<table class="w-75 ms-5" >
     <?php
     foreach ($res as $result) {
         $type = isset($result['subject']) ? 'subject.png' : (isset($result['song_name']) ? $result['cover'] : 'user.png');
@@ -122,6 +128,7 @@ $voteType=[
     ?>
 </table>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<!-- 選下拉選單時直接送出表單 -->
 <script>
     function switchType() {
         var type = $('#type').serialize();

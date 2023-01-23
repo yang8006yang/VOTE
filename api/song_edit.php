@@ -1,5 +1,9 @@
 <?php
 include_once "../db/base.php";
+if(isset($_GET['success']) && $_GET['success']=='1'){
+    alert('刪除成功!');
+}
+
 $_POST['description'] = str_replace("'", "\'", $_POST['description']);
 $_POST['name'] = str_replace("'", "\'", $_POST['name']);
 echo $_POST['name'];

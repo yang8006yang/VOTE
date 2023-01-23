@@ -1,3 +1,8 @@
+<?php
+if(isset($_GET['success']) && $_GET['success']=='1'){
+    alert('刪除成功!');
+}
+?>
 <div class="mx-auto w-50 mt-3">
     <div class="card-form text-center">
         <form action="./api/admin_add.php" method="post">

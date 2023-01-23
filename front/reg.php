@@ -15,7 +15,7 @@
                 <input type="submit" value="註冊" class="btn btn-warning">
                 <?php
                 if (isset($_GET['error'])) {
-                    echo "<div style='color:red;'>帳號、使用者名稱或電子郵件已註冊</div>";
+                    echo "<div style='color:red;'>帳號、使用者名稱或電子郵件已被註冊</div>";
                 }
                 ?>
             </div>
