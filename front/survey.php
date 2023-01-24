@@ -32,7 +32,7 @@
                 echo "<a href='./center.php?do=survey_vote&id={$survey['id']}' >";
                 echo $str;
             }
-        } else if($_GET['active']== '0'){
+        } else if(isset($_GET['active']) && $_GET['active']== '0'){
             if ($survey['active'] == 0 && $survey['vote'] != 0) {
                 echo "<a href='./center.php?do=survey_result&id={$survey['id']}' >";
                 echo $str;
