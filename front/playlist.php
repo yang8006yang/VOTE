@@ -35,7 +35,7 @@ if (empty($chk)) {
                 <div>{$song['singer']}<div>
             </td>
                 <td width='10%'>
-                <a href='./api/delSong4List copy.php?id={$song['id']}&list_id={$_GET['id']}&name={$_GET['name']}'>
+                <a href='./api/del.php?id={$song['id']}&list_id={$_GET['id']}&name={$_GET['name']}&table=playlist_song'>
                 <i class='fa-solid fa-minus p-1' style='border: 1px solid white;border-radius:50%'></i>
                 </a>    
                 </td>

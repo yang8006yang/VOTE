@@ -20,6 +20,11 @@ switch ($_GET['table']) {
         $table='playlists';
         $do="";
         break;
+    case 'playlist_song':
+        $table='playlist_songs';
+        $id=['list_id'=>$_GET['list_id'],'song_id'=>$_GET['id']];
+        $do="playlist&id={$_GET['list_id']}&name={$_GET['name']}";
+        break;
     
     default:
         # code...

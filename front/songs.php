@@ -5,7 +5,7 @@ if (isset($_GET['success']) && $_GET['success'] == '1') {
     alert('添加成功');
 }
 
-$songs=all('songs','ORDER BY `update_at` DESC LIMIT 5');
+$songs=all('songs','ORDER BY `update_at` DESC LIMIT 4');
 echo "<p>最新歌曲</p>";
 foreach ($songs as $song) {
 ?>
