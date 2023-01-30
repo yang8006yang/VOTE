@@ -4,7 +4,7 @@ if (isset($_GET['success']) && $_GET['success'] == '1') {
     alert('添加成功');
 }
 if (isset($_GET['id'])) {
-    $song = find('songs', $_GET['id']);
+    $song = $Song->find($_GET['id']);
     ?>
 <style>
     .song-img {

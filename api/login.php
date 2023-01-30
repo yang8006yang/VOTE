@@ -5,10 +5,9 @@ $acc = $_POST['acc'];
 $pw = $_POST['pw'];
 $email = $_POST['acc'];
 
-
-$chkA = find('users', ['acc' => $acc, 'pw' => $pw]);
-$chkE = find('users', ['email' => $acc, 'pw' => $pw]);
-$chkN = find('users', ['name' => $acc, 'pw' => $pw]);
+$chkA = $User->find(['acc' => $acc, 'pw' => $pw]);
+$chkE = $User->find(['email' => $acc, 'pw' => $pw]);
+$chkN = $User->find(['name' => $acc, 'pw' => $pw]);
 
 // if(!empty($chkA)){
 //     $chk=$chkA;

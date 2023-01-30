@@ -3,7 +3,7 @@ if (isset($_GET['error'])) {
     alert('圖片格式錯誤');
 };
 
-$song = find('songs', $_GET['id']);
+$song = $Song->find($_GET['id']);
 ?>
 <div class="m-5 card-form text-center">
     <div class=" mx-auto d-flex flex-column">

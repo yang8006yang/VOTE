@@ -48,7 +48,7 @@ if (!isset($_SESSION['login'])) {
                 <li><a href="" data-bs-toggle="collapse" data-bs-target="#vote">投票 ▼</a></li>
                 <ul id="vote" class="collapse">
                     <?php
-                     $adminChk = find('users',['acc'=>$_SESSION['login']['acc'],'level'=>0]);
+                     $adminChk = $User->find(['acc'=>$_SESSION['login']['acc'],'level'=>0]);
                      if (!empty($adminChk)) {
                         echo "<li><a href='center.php?do=survey_add'>新增投票</a></li>
                     <li><a href='center.php?do=survey'>編輯投票</a></li>
@@ -63,7 +63,7 @@ if (!isset($_SESSION['login'])) {
                     <li><a href='center.php?do=survey_result'>查看投票結果</a></li>";
                         echo "</ul>";
                         echo "<li><a href='center.php?do=playlist_add'>建立歌曲清單</a></li>";
-                        $playlists = all('playlists', ["user_id" => $_SESSION['login']['id']]);
+                        $playlists = $Playlist->all(["user_id" => $_SESSION['login']['id']]);
                         foreach ($playlists as $list) {
                             echo "<li><a href='center.php?do=playlist&id={$list['id']}&name={$list['list_name']}'>" . $list['list_name'] . "</a></li>";
                         }

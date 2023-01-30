@@ -1,7 +1,7 @@
 <?php
     include_once "./db/base.php";
-$subject=all('survey_subjects',['id'=>$_GET['id']]);
-$opts=all('survey_options',['subject_id'=>$_GET['id']]);
+$subject=$Subject->all(['id'=>$_GET['id']]);
+$opts=$Option->all(['subject_id'=>$_GET['id']]);
 // echo "<pre>";
 // var_dump($opts);
 // echo "</pre>";

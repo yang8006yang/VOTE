@@ -1,8 +1,8 @@
 <?php
 include_once "./db/base.php";
 if(isset($_GET['id'])){
-    $subject=find('survey_subjects',$_GET['id']);
-    $opts=all('survey_options',['subject_id'=>$_GET['id']]);
+    $subject=$Subject->find($_GET['id']);
+    $opts=$Option->all(['subject_id'=>$_GET['id']]);
 }else{
     to("center.php?do=survey&error");
 };

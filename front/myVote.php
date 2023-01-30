@@ -4,11 +4,11 @@
     include_once "./db/base.php";
 
     $user = $_SESSION['login']['id'];
-    $myVotes = all('survey_log', ['user' => $user]);
+    $myVotes = $Log->all(['user' => $user]);
 
     foreach ($myVotes as $myVote) {
-        $surveys[] = find('survey_subjects', ['id' => $myVote['subject_id']]);
-        $opts[] = find('survey_options', ['id' => $myVote['option_id']]);
+        $surveys[] = $Subjec->find(['id' => $myVote['subject_id']]);
+        $opts[] = $Option->find(['id' => $myVote['option_id']]);
     }
     
     foreach ($surveys as $key => $survey) {

@@ -24,15 +24,15 @@ if(isset($_GET['success']) && $_GET['success']=='1'){
         <?php
         if (isset($_GET['level'])) {
             if ($_GET['level'] == 0) {
-                $users = all("users", ['level' => '0']);
+                $users = $User->all(['level' => '0']);
             } else {
-                $users = all("users", ['level' => '1']);
+                $users = $User->all(['level' => '1']);
             }
         } else {
-            $users = all("users");
+            $users = $User->all();
         }
         if(isset($_GET['id'])){   
-            $users = all("users", ['id' => $_GET['id']]);
+            $users = $User->all(['id' => $_GET['id']]);
         }
         foreach ($users as $user) {
         ?>

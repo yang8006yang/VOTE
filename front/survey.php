@@ -17,7 +17,7 @@
     <?php
     include_once "./db/base.php";
 
-    $surveys = all("survey_subjects");
+    $surveys = $Subject->all();
     foreach ($surveys as $survey) {
         $str = "<div class='card bg-dark text-white mt-5'>
         <div class='card-body'>

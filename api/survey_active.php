@@ -2,7 +2,7 @@
 include_once "../db/base.php";
 
 $id=$_GET['id'];
-$subject=find('survey_subjects',$id);
+$subject=$Subject->find($id);
 $subject['active']=($subject['active']+1)%2;
-update("survey_subjects",$subject,$id);
+$Subject->save($subject);
 to('../center.php?do=survey');

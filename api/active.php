@@ -4,11 +4,11 @@ include_once "../db/base.php";
 $id=$_GET['id'];
 switch ($_GET['table']) {
     case 'survey':
-        $table='survey_subjects';
+        $table='Subject';
         $do='survey';
         break;
     case 'song':
-        $table='songs';
+        $table='Song';
         $do='song_list';
         break;
     
@@ -16,7 +16,7 @@ switch ($_GET['table']) {
         # code...
         break;
 }
-$tmp=find($table,$id);
+$tmp=$$table->find($id);
 switch ($_GET['table']) {
     case 'survey':
         $tmp['content'] = str_replace("'", "\'", $tmp['content']);
@@ -34,5 +34,5 @@ switch ($_GET['table']) {
 }
 // echo $tmp['song_name'];
 $tmp['active']=($tmp['active']+1)%2;
-update($table,$tmp,$id);
+$$table->save($tmp);
 to("../center.php?do=$do");

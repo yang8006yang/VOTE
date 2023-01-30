@@ -7,7 +7,7 @@ if(isset($_GET['success']) && $_GET['success']=='1'){
     <h1 class="col-12">歌曲列表</h1>
     <?php
 
-    $songs = all("songs");
+    $songs = $Song->all();
 
     foreach ($songs as $song) {
         $activeText = ($song['active'] == 1) ? "關閉" : "啟用";

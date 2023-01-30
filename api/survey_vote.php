@@ -4,16 +4,16 @@ include_once "../db/base.php";
 // if()
 
 $id=$_GET['id'];
-$opt=find('survey_options',$id);
+$opt=$Option->find($id);
 $vote=$opt['vote']+1;
 $subject_id=$opt['subject_id'];
-$sub=find('survey_subjects',$subject_id);
+$sub=$Subject->find($subject_id);
 $voteSub=$sub['vote']+1;
 
-$chk=find('survey_log',['user'=>$_SESSION['login']['id'],'subject_id'=>$sub['id']]);
+$chk=$Log->find(['user'=>$_SESSION['login']['id'],'subject_id'=>$sub['id']]);
 if(empty($chk)){
-    update('survey_options',['vote'=>$vote],$id);
-    update('survey_subjects',['vote'=>$voteSub],$sub['id']);
+    $Option->save(['vote'=>$vote]);
+    $Subject->save(['vote'=>$voteSub]);
     
     //偵測使用者端IP,並取得IP
     if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
@@ -34,7 +34,7 @@ if(empty($chk)){
         'subject_id'=>$sub['id'],
     'option_id'=>$opt['id']
 ];
-insert("survey_log",$log);
+$Log->save($log);
 to("../center.php?do=survey_result&id={$sub['id']}");
 }else{
     to("../center.php?do=survey_result&id={$sub['id']}&error=voted");

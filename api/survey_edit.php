@@ -1,14 +1,14 @@
 <?php
 include_once "../db/base.php";
 
-update('survey_subjects',
+$Subject->save('survey_subjects',
 [
+    'id'=>$_POST['id'],
     'subject'=>$_POST['subject'],
     'type'=>$_POST['type'],
     'content'=>$_POST['content'],
     'chart'=>$_POST['chart']
-],
-    $_POST['id']);
+]);
 $sql="SELECT `id` FROM `survey_options` WHERE `subject_id`={$_POST['id']}";
 $opt_id=$pdo->query($sql)->fetchALL(PDO::FETCH_COLUMN);
 
@@ -19,9 +19,9 @@ $opt_id=$pdo->query($sql)->fetchALL(PDO::FETCH_COLUMN);
 // print_r($_POST['opt_id']);
 // echo "</pre>";
 foreach($opt_id as $idx=>$id){
-    update('survey_options',['opt'=>$_POST['opt'][$idx]],$id);
+    $Option->save(['id'=>$id,'opt'=>$_POST['opt'][$idx]]);
     if(!in_array($id,$_POST['opt_id'])){
-        del('survey_options',$id);
+        $Option->del($id);
     }
 }
 
@@ -33,7 +33,7 @@ if(isset($_POST['optn'])){
                 'opt'=>$opt,
                 'vote'=>0
             ];
-            insert('survey_options',$tmp);
+            $Option->save($tmp);
         }
     }
 };

@@ -2,8 +2,8 @@
 include_once "./db/base.php";
 
 
-$chk = find('playlist_songs', ['list_id' => $_GET['id']]);
-$list = find('playlists', ['id' => $_GET['id']]);
+$chk = $Playlist_song->find(['list_id' => $_GET['id']]);
+$list = $Playlist->find(['id' => $_GET['id']]);
 echo "<div class='p-5 '><h1>" . $_GET['name'] . "</h1>";
 echo "<div class='text-secondary'>".$list['description']."</div>";
 if (empty($chk)) {

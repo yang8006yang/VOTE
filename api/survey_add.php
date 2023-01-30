@@ -8,10 +8,10 @@ $subject=['subject'=>$_POST['subject'],
 'active'=>0,
 'chart'=>$_POST['chart']
 ];
-insert('survey_subjects',$subject);
+$Subject->save($subject);
 
 // ==============取得主題ID給選項用==============
-$subject_id=find('survey_subjects',['subject'=>$_POST['subject']])['id'];
+$subject_id=$Subject->find(['subject'=>$_POST['subject']])['id'];
 
 // ==============準備選項資料並送入SQL==============
 if(isset($_POST['opt'])){
@@ -22,7 +22,7 @@ if(isset($_POST['opt'])){
                 'subject_id'=>$subject_id,
                 'vote'=>0,
             ];
-                insert('survey_options',$tmp);
+                $Option->save($tmp);
         }
     }
 }

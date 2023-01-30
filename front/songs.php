@@ -5,7 +5,7 @@ if (isset($_GET['success']) && $_GET['success'] == '1') {
     alert('添加成功');
 }
 
-$songs=all('songs','ORDER BY `update_at` DESC LIMIT 5');
+$songs=$Song->all('ORDER BY `update_at` DESC LIMIT 5');
 echo "<p>最新歌曲</p>";
 foreach ($songs as $song) {
 ?>
@@ -34,7 +34,7 @@ $div=5;
 $pages=ceil($total / $div); 
 $now = $_GET['page'] ?? 1;
 $start = ($now - 1) * $div;
-$songs=all('songs',"LIMIT $start,$div");
+$songs=$Song->all("LIMIT $start,$div");
 
 foreach ($songs as $song) {
     echo "<table width='90%' class='mx-auto mt-1 mb-1'>

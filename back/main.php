@@ -15,7 +15,7 @@
 <h1 class="mt-3 ms-3">進行中的投票</h1>
 <div class="d-flex ms-1">
     <?php
-    $surveys = all('survey_subjects', ['active' => 1], 'LIMIT 5');
+    $surveys = $Subject->all(['active' => 1], 'LIMIT 5');
     foreach ($surveys as $survey) {
     ?>
         <a href="./center.php?do=survey_vote&id=<?= $survey['id']; ?>" class="col card m-3 card-vote" style="border-radius:12px">

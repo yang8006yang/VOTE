@@ -6,7 +6,7 @@ $list=['list_name'=>$_POST['name'],
     'user_id'=>$_SESSION['login']['id']];
 
 if(!empty($list['list_name'])){
-    insert('playlists',$list);
+    $Playlist->save($list);
 };
     
 to("../center.php");

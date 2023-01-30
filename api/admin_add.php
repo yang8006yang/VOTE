@@ -1,8 +1,8 @@
 <?php
 include_once "../db/base.php";
-$user=find('users',$_POST['id']);
+$user=$User->find($_POST['id']);
 $user['level']=0;
 
-update('users',$user,$_POST['id']);
+$User->save($user);
 to("../center.php?do=user_list");
 ?>

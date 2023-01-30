@@ -4,20 +4,20 @@ include_once "../db/base.php";
 $id=$_GET['id'];
 switch ($_GET['table']) {
     case 'survey':
-        $table='survey_subjects';
+        $table='Subject';
         $do='survey';
-        del("survey_options",['subject_id'=>$id]);
+        $Option->del(['subject_id'=>$id]);
         break;
     case 'song':
-        $table='songs';
+        $table='Song';
         $do='song_list';
         break;
     case 'user':
-        $table='users';
+        $table='User';
         $do='user_list&level=1';
         break;
     case 'playlist':
-        $table='playlists';
+        $table='Playlist';
         $do="";
         break;
     
@@ -26,5 +26,5 @@ switch ($_GET['table']) {
         break;
 }
 
-del($table,$id);
+$$table->del($id);
 to("../center.php?do=$do&success=1");

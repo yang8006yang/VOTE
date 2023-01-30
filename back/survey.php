@@ -8,7 +8,7 @@ if(isset($_GET['success']) && $_GET['success']=='1'){
     <?php
     include_once "./db/base.php";
 
-    $surveys = all("survey_subjects");
+    $surveys = $Subject->all();
     
     foreach ($surveys as $survey) {
         $activeText = ($survey['active'] == 1) ? "關閉" : "啟用";

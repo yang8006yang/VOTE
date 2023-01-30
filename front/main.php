@@ -1,7 +1,7 @@
 <?php
-    $voting = all('survey_subjects', 'ORDER BY `vote` DESC LIMIT 1');
-    $subject = all('survey_subjects', ' WHERE `active`=0 && `vote`!=0 ORDER BY `vote` DESC LIMIT 1');
-    $opts = all('survey_options',['subject_id' => $subject[0]['id']]);
+    $voting = $Subject->all('ORDER BY `vote` DESC LIMIT 1');
+    $subject = $Subject->all(' WHERE `active`=0 && `vote`!=0 ORDER BY `vote` DESC LIMIT 1');
+    $opts = $OPtion->all(['subject_id' => $subject[0]['id']]);
     $xValues = [];
     $yValues = [];
     foreach ($opts as $opt) {
@@ -66,7 +66,7 @@
     <div class="position-relative">
         <div style="height:70vh;" class="owl-carousel owl-theme d-flex mt-xxl-5 pt-lg-5 justify-content-around overflow-hidden flex-wrap align-items-center">
             <?php
-            $array = all('songs', ['active' => '1'], 'ORDER BY `update_at` DESC LIMIT 5');
+            $array = $Song->all(['active' => '1'], 'ORDER BY `update_at` DESC LIMIT 5');
             // print_r($array);
             foreach ($array as $key => $value) {
                 $song = $value['song_name'] . " - " . $value['singer'];

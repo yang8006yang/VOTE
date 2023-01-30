@@ -8,7 +8,7 @@ $_POST['description'] = str_replace("'", "\'", $_POST['description']);
 $_POST['name'] = str_replace("'", "\'", $_POST['name']);
 echo $_POST['name'];
 
-    $song = find('songs', $_POST['id']);
+    $song = $Song->find($_POST['id']);
     $tmp = [
         'song_name' => $_POST['name'],
         'description' => $_POST['description'],
@@ -26,7 +26,7 @@ echo $_POST['name'];
             $tmp['cover']=$song['cover'];
         }
     };
-    update('songs', $tmp, $_POST['id']);
+    $Song->save($tmp);
     to('../center.php?do=song_list');
 
 
