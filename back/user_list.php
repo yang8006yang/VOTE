@@ -3,6 +3,7 @@ if(isset($_GET['success']) && $_GET['success']=='1'){
     alert('刪除成功!');
 }
 ?>
+<h1 class="text-center mt-3"><i class='fa-solid fa-user'></i>&nbsp;&nbsp;使用者中心</h1>
 <div class="mx-auto w-50 mt-3">
     <div class="card-form text-center">
         <form action="./api/admin_add.php" method="post">
@@ -14,7 +15,7 @@ if(isset($_GET['success']) && $_GET['success']=='1'){
         <a href="?do=user_list&level=1"><input type="button" value="會員列表" class="btn"></a>
         <a href="?do=user_list&level=0"><input type="button" value="管理者列表" class="btn"></button></a>
     </div>
-    <table>
+    <table class="mx-auto">
         <thead class="t-bottom-white">
             <td width=10%>id</td>
             <td width=40%>用戶名</td>
@@ -50,4 +51,5 @@ if(isset($_GET['success']) && $_GET['success']=='1'){
         <?php
         }
         ?>
+    </table>
 </div>

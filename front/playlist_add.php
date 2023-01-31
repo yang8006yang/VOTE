@@ -1,6 +1,6 @@
 <div class="card m-5 card-form text-center">
     <div class="card-body mx-auto d-flex flex-column align-items-center">
-    <h1 class="card-title impact bold">建立歌曲清單</h1>
+    <h1 class="card-title impact bold"><i class='fa-solid fa-square-plus'></i>&nbsp;&nbsp;建立歌曲清單</h1>
     <div class="line"></div>
 <form action="./api/playlist_add.php" method="post">
     <div>

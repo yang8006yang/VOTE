@@ -5,7 +5,7 @@ if (isset($_GET['error'])) {
 ?>
 <div class="card m-5 card-form text-center">
     <div class="card-body mx-auto d-flex flex-column ">
-        <h1 class="card-title impact bold text-start">新增歌曲</h1>
+        <h1 class="card-title impact bold text-start"><i class="fa-solid fa-compact-disc"></i>&nbsp;&nbsp;新增歌曲</h1>
         <div class="line"></div>
         <form action="./api/song_add.php" method="post" enctype="multipart/form-data" class="w-100">
             <div>

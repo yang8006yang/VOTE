@@ -1,3 +1,10 @@
+:root {
+  --body-color: #242424;
+  --text-color: white;
+  --main-red: #C30D23;
+  --main-yellow: #d7b700;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -22,8 +29,8 @@ a:hover {
 }
 
 body {
-  background-color: #242424;
-  color: #eee;
+  background-color: var(--body-color);
+  color: var(--text-color);
 }
 
 
@@ -93,19 +100,19 @@ main {
 
 /* 捲軸本體顏色 */
 #scroll::-webkit-scrollbar-thumb {
-  background-color: #ababab;
+  background-color: #2f2f2f;
 }
 
 /* 搜尋框 */
 #keyword {
   border-radius: 20px;
-  /* background-color:  #242424;; */
+  /* background-color:  var(--body-color);; */
   /* display: none; */
 }
 
 #search-icon {
   border: 0;
-  background-color: rgb(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
 }
 
 /* 投票選單區 */
@@ -114,11 +121,13 @@ main {
 }
 
 /* =====================MAIN======================== */
-
+main{
+  overflow-x: hidden;
+}
 /* 首頁卡片 */
 .card-vote {
-  background-image: linear-gradient(to right, #C30D23 0%, #d7b700 100%);
-  color: rgb(255, 255, 255);
+  background-image: linear-gradient(to right, var(--main-red) 0%, var(--main-yellow) 100%);
+  color: var(--text-color);
   transition: all .3s;
   border-radius: 12px;
   border: 0;
@@ -141,7 +150,7 @@ main {
 .card-main:hover {
   transform: scale(0.99);
   border-radius: 12px;
-  color: white;
+  color: var(--text-color);
 }
 
 /* =====================TABLE======================== */
@@ -152,13 +161,13 @@ main {
 
 /* =====================ADD/EDIT FORM======================== */
 .card-form {
-  background-color: #242424;
+  background-color: var(--body-color);
   border: 0;
 }
 
 .card-form .card-body {
   width: 50vw;
-  background-color: #242424;
+  background-color: var(--body-color);
   border: 0;
 }
 
@@ -180,8 +189,8 @@ select {
 #addOpt,
 .fa-image {
 
-  background-color: #d7b700;
-  color: #eee;
+  background-color: var(--main-yellow);
+  color: var(--text-color);
   font-weight: 900;
   margin: 0.5rem 0.5rem;
   padding: 0.5rem 0.5rem;
@@ -196,7 +205,7 @@ select {
 }
 
 .card-form .submitBtn{
-  background-color: #C30D23;
+  background-color: var(--main-red);
 }
 
 .fa-image {
@@ -223,6 +232,6 @@ select {
 .now{
   font-size: large;
   font-weight: bold;
-  color: #C30D23;
+  color: var(--main-red);
 }
 
