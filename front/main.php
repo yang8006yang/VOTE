@@ -8,6 +8,7 @@
         array_push($xValues, $opt['opt']);
         array_push($yValues, $opt['vote']);
     }
+    $loginChk = (isset($_SESSION['login']))?'center.php':'index.php?do=reg'
     ?>
 
 <div style="position: relative;" class="d-flex">
@@ -17,7 +18,7 @@
         </div>
         <div class="font-weight-bold text-white bold fs-5">發表你的意見、聽見大家的聲音，並將你喜歡的歌曲分類!</div>
 
-        <button class="btn btn-lg btn-light mt-5 impact fs-2 ps-5 pe-5 shadow" onclick="location.href ='index.php?do=reg'">Get Start</a></button>
+        <button class="btn btn-lg btn-light mt-5 impact fs-2 ps-5 pe-5 shadow" onclick="location.href ='<?=$loginChk;?>'">Get Start</a></button>
 
     </div>
     <img src="./img/happy-beautiful-brunette-girl-dancing-listening-music-wireless-headphones-holding-smartphone2.png" alt="" class="mainImg position-absolute img-fluid" style="height: 80vh;">
@@ -44,7 +45,7 @@
         <div class="text-white fs-1 mt-5 impact">
             Everyone Voting
         </div>
-        <div class="box mx-auto mt-3 d-flex ">
+        <a href="./center.php?do=survey_vote&id=<?=$voting[0]['id'];?>" class="box mx-auto mt-3 d-flex text-dark">
             <div class="d-flex flex-column justify-content-center ps-5">
                 <div class="fs-2 bold pt-5"><?= $voting[0]['subject']; ?></div>
                 <div class="line " style="background-color:rgb(27, 36, 37);width: 20vw;"></div>
@@ -54,7 +55,7 @@
                 參與人數
                 <div class="fs-1"> <?= $voting[0]['vote']; ?></div>
             </div>
-        </div>
+</a>
     </div>
 </div>
 <figure class="marquee marquee--mantis" data-text=" ! NEWS !  VOTE !  SONG !"></figure>
@@ -73,9 +74,11 @@
                 $img = $value['cover']
             ?>
                 <div class="item album position-relative ">
-                    <div class="cd-cover mx-auto shadow" style="background-image: url(./upload/<?= $img; ?>);"></div>
-                    <div class="cd mx-auto shadow"></div>
-                    <div class="fs-5 text-center"><?= $song; ?></div>
+                    <a href="./center.php?do=song&id=<?=$value['id'];?>">
+                        <div class="cd-cover mx-auto shadow" style="background-image: url(./upload/<?= $img; ?>);"></div>
+                        <div class="cd mx-auto shadow"></div>
+                        <div class="fs-5 text-center"><?= $song; ?></div>
+                    </a>
                 </div>
             <?php
             }
